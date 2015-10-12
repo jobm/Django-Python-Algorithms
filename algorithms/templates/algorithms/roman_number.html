@@ -1,0 +1,16 @@
+<div class="view-wrapper">
+  {% extends "index.html" %}
+
+  {% block title %}{% endblock title%}
+
+  {% block content %}
+
+  <form class="form" action="" method="" accept-charset="utf-8">
+      {%csrf_token%}
+      {{form.as_p}}
+    <p>
+      <input id="calculate" type="submit" name="name" value="convert">
+  </form>
+  <h2>{{number}}</h2>
+  {% endblock content %}
+</div>
