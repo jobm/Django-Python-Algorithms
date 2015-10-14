@@ -8,8 +8,10 @@
   <form class="form" action="" method="POST" accept-charset="utf-8">
       {%csrf_token%}
       {{form.as_p}}
+
+    <p>
       <input id="calculate" type="submit" name="name" value="convert">
   </form>
-  <h1>{{roman_value}}</h1>
+  <h1>{{roman}}</h1>
   {% endblock content %}
 </div>
