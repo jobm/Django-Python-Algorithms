@@ -8,10 +8,14 @@ def roman(request):
     context = {
         'form' : form
     }
+
     if form.is_valid():
-        value = form.cleaned_data.get('roman_number')
-        roman_value = convert_to_roman(value);
-        context = {'form' : form, 'roman_value' : roman_value}
+        try:
+            value = form.cleaned_data.get('roman_number')
+            roman_value = convert_to_roman(value)
+            context = {'form' : form, 'roman_value' : roman_value}
+        except:
+            context = {'form' : form, 'roman_value' : 0}
     return render(request, 'algorithms/roman_number.html', context)
 
 def convert_to_roman(user_input):
@@ -20,5 +24,6 @@ def convert_to_roman(user_input):
      #sum the instance of each character found in user input based on the key, use a anonymous func
      if isinstance(user_input, str):
          return sum(map(lambda x: values[x], user_input))
-     return 'v'
+     else:
+         return 0
     #  print(convert_to_roman(get_user_input().lower()))
